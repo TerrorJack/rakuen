@@ -27,8 +27,9 @@ RUN update-alternatives --install /usr/bin/ld ld /usr/bin/ld.gold 80
 
 ADD config.yaml /root/.stack
 RUN mkdir -p /root/.local/bin
+ENV PATH /root/.local/bin:$PATH
 RUN curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.20171022/stack-1.6.0.20171022-linux-x86_64-static.tar.gz | tar xz --wildcards --strip-components=1 -C /root/.local/bin '*/stack'
-RUN /root/.local/bin/stack --resolver nightly-2017-10-31 setup
-ENV PATH /root/.local/bin:`/root/.local/bin/stack path --compiler-bin`:$PATH
+RUN stack --resolver nightly-2017-10-31 setup
+ENV PATH /root/.local/bin:`stack path --compiler-bin`:$PATH
 RUN rm `stack path --programs`/*.tar.*
 RUN stack install alex cabal-install happy hscolour
