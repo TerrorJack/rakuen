@@ -38,4 +38,4 @@ RUN curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.
 RUN /root/.local/bin/stack --resolver nightly-2017-10-31 setup
 ENV PATH /root/.local/bin:`/root/.local/bin/stack path --compiler-bin`:$PATH
 RUN rm `stack path --programs`/*.tar.*
-RUN stack install alex c2hs cabal-install cpphs ghcid happy hindent hlint hoogle hpack hscolour intero
+RUN stack install alex c2hs cabal-install cpphs ghcid happy hindent hlint hoogle hpack hscolour
