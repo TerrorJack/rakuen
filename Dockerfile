@@ -2,11 +2,18 @@ FROM ubuntu:artful
 
 RUN apt update
 RUN apt install -y apt-transport-https curl software-properties-common
+RUN curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+RUN curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN add-apt-repository -y "deb http://apt.llvm.org/artful/ llvm-toolchain-artful main"
+RUN add-apt-repository -y "deb http://apt.llvm.org/artful/ llvm-toolchain-artful-5.0 main"
+RUN add-apt-repository -y "deb https://deb.nodesource.com/node_8.x artful main"
+RUN add-apt-repository -y "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main"
 RUN add-apt-repository -y ppa:git-core/candidate
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt update
 RUN apt upgrade -y
-RUN apt install -y autoconf automake g++-8 git libedit-dev libffi-dev libgmp-dev make netbase pkg-config zlib1g-dev
+RUN apt install -y autoconf automake g++-8 git libedit-dev libffi-dev libgmp-dev libpq-dev llvm-5.0-dev make netbase nodejs pkg-config zlib1g-dev
 RUN apt autoremove -y
 RUN apt clean -y
 
