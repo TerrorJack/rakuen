@@ -13,7 +13,7 @@ RUN add-apt-repository -y ppa:git-core/candidate
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt update
 RUN apt upgrade -y
-RUN apt install -y autoconf automake g++-8 git libedit-dev libffi-dev libgmp-dev libpq-dev llvm-5.0-dev make netbase nodejs pkg-config zlib1g-dev
+RUN apt install -y autoconf automake depqbf g++-8 git libedit-dev libffi-dev libgmp-dev libpq-dev llvm-5.0-dev make minisat netbase nodejs pkg-config z3 zlib1g-dev
 RUN apt autoremove -y
 RUN apt clean -y
 
@@ -38,4 +38,4 @@ RUN curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.
 RUN /root/.local/bin/stack --resolver nightly-2017-11-01 setup
 ENV PATH /root/.local/bin:`/root/.local/bin/stack path --compiler-bin`:$PATH
 RUN rm `stack path --programs`/*.tar.*
-RUN stack install alex c2hs cabal-install cpphs ghcid happy hlint hoogle hpack hscolour intero pandoc
+RUN stack install accelerate-llvm-native ad alex arithmoi bound c2hs cabal-install compact cpphs criterion dhall ersatz ghcid happy hlint hoogle hpack hscolour intero linear megaparsec morte picosat recursion-schemes sbv selda-postgresql selda-sqlite servant-client servant-server shake singletons unbound-generics
