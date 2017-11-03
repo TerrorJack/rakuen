@@ -7,8 +7,8 @@ RUN add-apt-repository -y "deb http://apt.postgresql.org/pub/repos/apt/ artful-p
 RUN add-apt-repository -y ppa:git-core/candidate
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt update
-RUN apt upgrade -y
-RUN apt install -y autoconf automake g++-8 git libedit-dev libffi-dev libgmp-dev libpq-dev libzmq3-dev make netbase pkg-config zlib1g-dev
+RUN apt dist-upgrade -y
+RUN apt install -y autoconf automake depqbf g++-8 git libedit-dev libffi-dev libgmp-dev liblmdb-dev libpq-dev libzmq3-dev make minisat netbase pkg-config z3 zlib1g-dev
 RUN apt autoremove -y
 RUN apt clean -y
 
@@ -30,7 +30,7 @@ RUN update-alternatives --install /usr/bin/ld ld /usr/bin/ld.gold 80
 ADD config.yaml /root/.stack/config.yaml
 RUN mkdir -p /root/.local/bin
 RUN curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.20171022/stack-1.6.0.20171022-linux-x86_64-static.tar.gz | tar xz --wildcards --strip-components=1 -C /root/.local/bin '*/stack'
-RUN /root/.local/bin/stack --resolver nightly-2017-11-02 setup
-ENV PATH /root/.local/bin:`/root/.local/bin/stack path --compiler-bin`:$PATH
-RUN rm `stack path --programs`/*.tar.*
-RUN stack install alex c2hs cabal-install cpphs ekg ghcid happy hlint hoogle hpack hscolour hworker intero selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets stylish-haskell zeromq4-haskell
+RUN /root/.local/bin/stack --no-terminal --resolver nightly-2017-11-02 setup
+ENV PATH /root/.local/bin:`/root/.local/bin/stack --no-terminal path --compiler-bin`:$PATH
+RUN rm `stack --no-terminal path --programs`/*.tar.*
+RUN stack --no-terminal install --haddock ad alex atom-conduit bloodhound bound c2hs cabal-install compact cpphs dhall ekg ersatz feed ghcid happy hlint hoogle hpack hscolour hworker intero irc-client katip-elasticsearch linear lmdb megaparsec morte picosat pretty-show recursion-schemes SafeSemaphore sbv selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets singletons stylish-haskell unbound-generics zeromq4-haskell

@@ -1,7 +1,4 @@
 build:
   prefetch: true
-  keep-going: true
-  haddock: true
-  haddock-deps: true
 ghc-options:
-  "$everything": -threaded -with-rtsopts=-N -split-sections
+  "$everything": -split-sections
