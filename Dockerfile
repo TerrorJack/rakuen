@@ -2,11 +2,13 @@ FROM ubuntu:artful
 
 RUN apt update
 RUN apt install -y apt-transport-https curl software-properties-common
+RUN curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN add-apt-repository -y "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main"
 RUN add-apt-repository -y ppa:git-core/candidate
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt update
 RUN apt upgrade -y
-RUN apt install -y autoconf automake g++-8 git libedit-dev libffi-dev libgmp-dev libsdl2-dev make netbase pkg-config zlib1g-dev
+RUN apt install -y autoconf automake g++-8 git libedit-dev libffi-dev libgmp-dev libpq-dev libzmq3-dev make netbase pkg-config zlib1g-dev
 RUN apt autoremove -y
 RUN apt clean -y
 
@@ -31,4 +33,4 @@ RUN curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.
 RUN /root/.local/bin/stack --resolver nightly-2017-11-02 setup
 ENV PATH /root/.local/bin:`/root/.local/bin/stack path --compiler-bin`:$PATH
 RUN rm `stack path --programs`/*.tar.*
-RUN stack install alex c2hs cabal-install cpphs ghcid happy hlint hoogle hpack hscolour intero sdl2
+RUN stack install alex c2hs cabal-install cpphs ekg ghcid happy hlint hoogle hpack hscolour hworker intero selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets stylish-haskell zeromq4-haskell
