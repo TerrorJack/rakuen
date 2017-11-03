@@ -2,13 +2,15 @@ FROM ubuntu:artful
 
 RUN apt update
 RUN apt install -y apt-transport-https curl software-properties-common
+RUN curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 RUN curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN add-apt-repository -y "deb http://apt.llvm.org/artful/ llvm-toolchain-artful-5.0 main"
 RUN add-apt-repository -y "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main"
 RUN add-apt-repository -y ppa:git-core/candidate
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt update
 RUN apt dist-upgrade -y
-RUN apt install -y autoconf automake depqbf g++-8 git libedit-dev libffi-dev libgmp-dev liblmdb-dev libpq-dev libzmq3-dev make minisat netbase pkg-config z3 zlib1g-dev
+RUN apt install -y autoconf automake depqbf gcc-8 git libedit-dev libffi-dev libgit2-dev libgmp-dev liblmdb-dev libpq-dev libsdl2-dev libzmq3-dev llvm-5.0-dev make minisat netbase pkg-config z3 zlib1g-dev
 RUN apt autoremove -y
 RUN apt clean -y
 
@@ -17,7 +19,6 @@ RUN cp crtbeginS.o crtbeginT.o
 WORKDIR /root
 
 RUN update-alternatives --install /usr/bin/cpp cpp /usr/bin/cpp-8 80
-RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 80
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 80
 RUN update-alternatives --install /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-8 80
 RUN update-alternatives --install /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-8 80
@@ -33,5 +34,5 @@ RUN curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.
 RUN /root/.local/bin/stack --no-terminal --resolver nightly-2017-11-02 setup
 ENV PATH /root/.local/bin:`/root/.local/bin/stack --no-terminal path --compiler-bin`:$PATH
 RUN rm `stack --no-terminal path --programs`/*.tar.*
-RUN stack --no-terminal install --haddock alex c2hs cpphs happy hscolour
-RUN stack --no-terminal install --haddock ad apply-refact atom-conduit bloodhound bound cabal-install compact criterion dhall distributed-closure distributed-process-simplelocalnet distributed-process-tests ekg ersatz feed ghcid hedgehog-quickcheck hlint hoogle hpack hworker intero irc-client katip-elasticsearch linear lmdb megaparsec morte picosat pretty-show recursion-schemes SafeSemaphore sbv selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets shake singletons stylish-haskell tasty-quickcheck tasty-smallcheck TCache transient-universe unbound-generics zeromq4-haskell
+RUN stack --no-terminal install --haddock alex c2hs cabal-install cpphs happy hscolour hspec-discover
+RUN stack --no-terminal install --haddock ad apply-refact atom-conduit bloodhound bound cassava compact criterion dhall distributed-closure distributed-process-simplelocalnet distributed-process-tests doctest ekg ersatz feed ghcid gloss GPipe haxl hedgehog-quickcheck hlibgit2 hlint hoogle hpack hworker intero irc-client katip-elasticsearch llvm-hs lmdb megaparsec morte picosat pretty-show recursion-schemes SafeSemaphore sbv sdl2 selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets shake singletons stm-containers stylish-haskell tasty-quickcheck tasty-smallcheck TCache threepenny-gui transient-universe unagi-chan unbound-generics vcswrapper zeromq4-haskell
