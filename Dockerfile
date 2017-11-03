@@ -10,7 +10,7 @@ RUN add-apt-repository -y ppa:git-core/candidate
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt update
 RUN apt dist-upgrade -y
-RUN apt install -y autoconf automake depqbf gcc-8 git libedit-dev libffi-dev libgmp-dev liblmdb-dev libpq-dev libsdl2-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
+RUN apt install -y autoconf automake depqbf g++-8 git libedit-dev libffi-dev libgmp-dev liblmdb-dev libpq-dev libsdl2-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
 RUN apt autoremove -y
 RUN apt clean -y
 
@@ -19,6 +19,7 @@ RUN cp crtbeginS.o crtbeginT.o
 WORKDIR /root
 
 RUN update-alternatives --install /usr/bin/cpp cpp /usr/bin/cpp-8 80
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 80
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 80
 RUN update-alternatives --install /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-8 80
 RUN update-alternatives --install /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-8 80
