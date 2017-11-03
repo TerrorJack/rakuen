@@ -10,7 +10,7 @@ RUN add-apt-repository -y ppa:git-core/candidate
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt update
 RUN apt dist-upgrade -y
-RUN apt install -y autoconf automake depqbf g++-8 git libedit-dev libffi-dev libgit2-dev libgmp-dev libicu-dev liblmdb-dev libpq-dev libsdl2-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
+RUN apt install -y autoconf automake depqbf g++-8 git libcurl4-openssl-dev libedit-dev libffi-dev libgit2-dev libgmp-dev libicu-dev liblmdb-dev libpq-dev libsdl2-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
 RUN apt autoremove -y
 RUN apt clean -y
 
@@ -36,4 +36,4 @@ RUN /root/.local/bin/stack --no-terminal --resolver nightly-2017-11-03 setup
 ENV PATH /root/.local/bin:`/root/.local/bin/stack --no-terminal path --compiler-bin`:$PATH
 RUN rm `stack --no-terminal path --programs`/*.tar.*
 RUN stack --no-terminal install --haddock alex c2hs cpphs happy hscolour hspec-discover
-RUN stack --no-terminal install --haddock accelerate-llvm-native ad Agda alarmclock apply-refact arithmoi atom-conduit bound brittany cabal-install cabal-toolkit cassava compact criterion dhall diagrams-svg distributed-closure distributed-process-simplelocalnet distributed-process-tests doctest ekg ersatz feed ghc-events ghcid gloss GPipe haxl hedgehog-quickcheck hlibgit2 hlint hoogle hpack hworker integration intero irc-client katip-elasticsearch lmdb machines megaparsec morte netwire-input open-browser pandoc pcre-heavy picosat pretty-show raaz rainbox reactive-banana repa-algorithms repa-io SafeSemaphore sbv sdl2 selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets singletons stm-containers stylish-haskell tasty-quickcheck tasty-smallcheck TCache text-icu threepenny-gui transient-universe twitter-conduit unagi-chan unbound-generics unification-fd vcswrapper webdriver weigh wreq Yampa zeromq4-haskell zippers
+RUN stack --no-terminal install --haddock accelerate-llvm-native ad Agda alarmclock apply-refact arithmoi atom-conduit bound brittany cabal-install cabal-toolkit cassava compact criterion curl dhall diagrams-svg distributed-closure distributed-process-simplelocalnet distributed-process-tests doctest ekg ersatz feed ghc-events ghcid gloss GPipe haxl hedgehog-quickcheck hlibgit2 hlint hoogle hpack hworker integration intero irc-client katip-elasticsearch lmdb machines megaparsec morte netwire-input open-browser pandoc pcre-heavy picosat pretty-show raaz rainbox reactive-banana repa-algorithms repa-io SafeSemaphore sbv sdl2 selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets singletons stm-containers stylish-haskell tasty-quickcheck tasty-smallcheck TCache text-icu threepenny-gui transient-universe twitter-conduit unagi-chan unbound-generics unification-fd vcswrapper webdriver weigh wreq Yampa zeromq4-haskell zippers
