@@ -29,8 +29,8 @@ RUN update-alternatives --install /usr/bin/ld ld /usr/bin/ld.gold 80
 ADD config.yaml /root/.stack/config.yaml
 RUN mkdir -p /root/.local/bin
 RUN curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.20171022/stack-1.6.0.20171022-linux-x86_64-static.tar.gz | tar xz --wildcards --strip-components=1 -C /root/.local/bin '*/stack'
-RUN /root/.local/bin/stack --no-terminal --resolver nightly-2017-11-02 setup
+RUN /root/.local/bin/stack --no-terminal --resolver nightly-2017-11-03 setup
 ENV PATH /root/.local/bin:`/root/.local/bin/stack --no-terminal path --compiler-bin`:$PATH
 RUN rm `stack --no-terminal path --programs`/*.tar.*
-RUN stack --no-terminal install --haddock alex c2hs cabal-install cpphs happy hscolour hspec-discover
-RUN stack --no-terminal install --haddock apply-refact atom-conduit compact ekg feed ghcid hedgehog-quickcheck hlint hoogle hpack hworker intero irc-client katip-elasticsearch lmdb SafeSemaphore selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets stm-containers stylish-haskell tasty-quickcheck tasty-smallcheck TCache unagi-chan zeromq4-haskell
+RUN stack --no-terminal install --haddock alex c2hs cabal-install cpphs happy hpack hscolour hspec-discover
+RUN stack --no-terminal install --haddock apply-refact atom-conduit compact ekg feed ghcid hedgehog-quickcheck hlint hoogle hworker intero irc-client katip-elasticsearch lmdb SafeSemaphore selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets stm-containers stylish-haskell tasty-quickcheck tasty-smallcheck TCache unagi-chan zeromq4-haskell
