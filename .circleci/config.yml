@@ -8,6 +8,6 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: |
-          docker build --squash -t terrorjack/rakuen:$CIRCLE_TAG .
+          docker build -t terrorjack/rakuen:$CIRCLE_TAG .
           docker login -u terrorjack -p $DOCKER_PASS
           docker push terrorjack/rakuen:$CIRCLE_TAG
