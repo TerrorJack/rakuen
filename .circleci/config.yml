@@ -1,13 +1,12 @@
 version: 2
 jobs:
   build:
-    context: org-global
     docker:
       - image: docker:stable-git
     steps:
       - checkout
       - setup_remote_docker
       - run: |
-          docker build -t terrorjack/rakuen:nightly-2017-11-03 .
           docker login -u terrorjack -p $DOCKER_PASS
+          docker build -t terrorjack/rakuen:nightly-2017-11-03 .
           docker push terrorjack/rakuen:nightly-2017-11-03
