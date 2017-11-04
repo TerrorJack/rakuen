@@ -1,7 +1,8 @@
 #!/bin/sh
 
 apt update
-apt install -y apt-transport-https curl software-properties-common
+apt install -y apt-transport-https apt-utils curl locales software-properties-common
+locale-gen en_US.UTF-8
 curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 add-apt-repository -y "deb http://apt.llvm.org/artful/ llvm-toolchain-artful-5.0 main"
@@ -10,11 +11,9 @@ add-apt-repository -y ppa:git-core/candidate
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt update
 apt dist-upgrade -y
-apt install -y autoconf automake depqbf g++-8 git libcurl4-openssl-dev libedit-dev libffi-dev libgmp-dev libicu-dev liblmdb-dev libpq-dev libsdl2-dev libzmq3-dev llvm-5.0-dev locales make minisat netbase openssh-client pkg-config z3 zlib1g-dev
+apt install -y autoconf automake depqbf g++-8 git graphviz libcurl4-openssl-dev libedit-dev libffi-dev libgmp-dev libicu-dev liblmdb-dev libpq-dev libsdl2-dev libsndfile1-dev libzip-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
 apt autoremove -y
 apt clean -y
-
-locale-gen en_US.UTF-8
 
 cd /usr/lib/gcc/x86_64-linux-gnu/8
 cp crtbeginS.o crtbeginT.o
@@ -37,4 +36,4 @@ curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.2017
 stack --no-terminal --resolver nightly-2017-11-04 setup
 rm `stack --no-terminal path --programs`/*.tar.*
 stack --no-terminal install --haddock alex c2hs cpphs happy hscolour hspec-discover
-stack --no-terminal install --haddock accelerate-llvm-native ad Agda alarmclock apply-refact arithmoi atom-conduit bound brittany cabal-install cabal-toolkit cassava compact criterion curl dhall diagrams-svg distributed-closure distributed-process-simplelocalnet distributed-process-tests doctest ekg ersatz feed ghc-events ghcid gloss GPipe haxl hedgehog-quickcheck hindent hlint hoogle hpack hworker integration intero irc-client katip-elasticsearch lmdb machines megaparsec morte netwire-input open-browser pandoc pcre-heavy picosat pretty-show raaz rainbox reactive-banana repa-algorithms repa-io SafeSemaphore sbv sdl2 selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets singletons stm-containers stylish-haskell tasty-quickcheck tasty-smallcheck TCache text-icu threepenny-gui transient-universe twitter-conduit unagi-chan unbound-generics unification-fd vcswrapper webdriver weigh wreq Yampa zeromq4-haskell zippers
+stack --no-terminal install --haddock accelerate-llvm-native Agda alarmclock apply-refact arithmoi atom-conduit backprop bench bound brittany cabal-install cabal-toolkit cassava compact curl dhall diagrams-svg distributed-closure distributed-process-simplelocalnet distributed-process-tests distribution-nixpkgs djinn-ghc docker-build-cacher doctest effect-handlers ekg ersatz ether extensible-effects extrapolate feed free-vl ghc-events ghcid gloss GPipe hasmin haxl hedgehog-quickcheck hindent hint hit hjsmin hlint hoogle hopenpgp-tools hpack hsndfile-vector hspec-checkers hworker inline-c-cpp integration intero irc-client katip-elasticsearch language-java LibZip lmdb machines-binary machines-directory machines-io megaparsec morte netwire-input open-browser operational pandoc pcre-heavy persistent-mongoDB persistent-mysql-haskell persistent-postgresql persistent-refs persistent-sqlite persistent-template picosat pretty-show raaz rainbox reactive-banana repa-algorithms repa-io SafeSemaphore sbv sdl2 selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets shake-language-c ShellCheck stm-containers stylish-haskell tardis tasty-quickcheck tasty-smallcheck TCache text-icu threepenny-editors threepenny-gui-flexbox transient-universe twitter-conduit type-combinators-singletons unagi-chan unbound-generics unification-fd union vcswrapper webdriver websockets-rpc weigh wreq Yampa zeromq4-haskell zippers
