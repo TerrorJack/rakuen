@@ -10,7 +10,7 @@ add-apt-repository -y ppa:git-core/candidate
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt update
 apt dist-upgrade -y
-apt install -y autoconf automake depqbf g++-8 git libedit-dev libffi-dev libgit2-dev libgmp-dev libicu-dev liblmdb-dev libpq-dev libsdl2-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
+apt install -y autoconf automake depqbf g++-8 git libcurl4-openssl-dev libedit-dev libffi-dev libgmp-dev libicu-dev liblmdb-dev libpq-dev libsdl2-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
 apt autoremove -y
 apt clean -y
 
@@ -32,7 +32,7 @@ update-alternatives --install /usr/bin/ld ld /usr/bin/ld.gold 80
 mkdir -p /root/.local/bin
 export PATH=/root/.local/bin:$PATH
 curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.20171022/stack-1.6.0.20171022-linux-x86_64-static.tar.gz | tar xz --wildcards --strip-components=1 -C /root/.local/bin '*/stack'
-stack --no-terminal --resolver nightly-2017-11-03 setup
+stack --no-terminal --resolver nightly-2017-11-04 setup
 rm `stack --no-terminal path --programs`/*.tar.*
 stack --no-terminal install --haddock alex c2hs cpphs happy hscolour hspec-discover
-stack --no-terminal install --haddock accelerate-llvm-native ad alarmclock apply-refact arithmoi atom-conduit bound brittany cabal-install cabal-toolkit cassava compact criterion curl dhall diagrams-svg distributed-closure distributed-process-simplelocalnet distributed-process-tests doctest ekg ersatz feed ghc-events ghcid gloss GPipe haxl hedgehog-quickcheck hlibgit2 hlint hoogle hpack hworker integration intero irc-client katip-elasticsearch lmdb machines megaparsec morte netwire-input open-browser pandoc pcre-heavy picosat pretty-show raaz rainbox reactive-banana repa-algorithms repa-io SafeSemaphore sbv sdl2 selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets singletons stm-containers stylish-haskell tasty-quickcheck tasty-smallcheck TCache text-icu threepenny-gui transient-universe twitter-conduit unagi-chan unbound-generics unification-fd vcswrapper webdriver weigh wreq Yampa zeromq4-haskell zippers
+stack --no-terminal install --haddock accelerate-llvm-native ad alarmclock apply-refact arithmoi atom-conduit bound brittany cabal-install cabal-toolkit cassava compact criterion curl dhall diagrams-svg distributed-closure distributed-process-simplelocalnet distributed-process-tests doctest ekg ersatz feed ghc-events ghcid gloss GPipe haxl hedgehog-quickcheck hlint hoogle hpack hworker integration intero irc-client katip-elasticsearch lmdb machines megaparsec morte netwire-input open-browser pandoc pcre-heavy picosat pretty-show raaz rainbox reactive-banana repa-algorithms repa-io SafeSemaphore sbv sdl2 selda-postgresql selda-sqlite servant-client servant-swagger-ui servant-websockets singletons stm-containers stylish-haskell tasty-quickcheck tasty-smallcheck TCache text-icu threepenny-gui transient-universe twitter-conduit unagi-chan unbound-generics unification-fd vcswrapper webdriver weigh wreq Yampa zeromq4-haskell zippers
