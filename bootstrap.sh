@@ -11,7 +11,7 @@ add-apt-repository -y ppa:git-core/candidate
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt update
 apt dist-upgrade -y
-apt install -y autoconf automake depqbf g++-8 git graphviz libcurl4-openssl-dev libedit-dev libffi-dev libgmp-dev libicu-dev liblmdb-dev libpq-dev libsdl2-dev libsndfile1-dev libzip-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
+apt install -y autoconf automake depqbf g++-8 git graphviz libbz2-dev libcurl4-openssl-dev libedit-dev libffi-dev libgmp-dev libicu-dev liblmdb-dev libpq-dev libsdl2-dev libsndfile1-dev libzip-dev libzmq3-dev llvm-5.0-dev make minisat netbase openssh-client pkg-config z3 zlib1g-dev
 apt autoremove -y
 apt clean -y
 
