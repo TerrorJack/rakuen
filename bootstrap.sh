@@ -9,7 +9,7 @@ curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 add-apt-repository -y "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
 add-apt-repository -y "deb http://apt.llvm.org/artful/ llvm-toolchain-artful-5.0 main"
-add-apt-repository -y "deb https://deb.nodesource.com/node_8.x zesty main"
+add-apt-repository -y "deb https://deb.nodesource.com/node_9.x artful main"
 add-apt-repository -y "deb http://apt.postgresql.org/pub/repos/apt/ artful-pgdg main"
 add-apt-repository -y ppa:git-core/candidate
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
