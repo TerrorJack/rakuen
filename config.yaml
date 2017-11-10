@@ -2,7 +2,7 @@ build:
   prefetch: true
 ghc-options:
   "$everything": -split-sections
-compiler: ghc-8.2.1.20171108
+allow-newer: true
 setup-info:
   ghc:
     linux64-nopie:
