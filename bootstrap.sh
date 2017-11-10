@@ -36,6 +36,15 @@ update-alternatives --install /usr/bin/gcov-dump gcov-dump /usr/bin/gcov-dump-8 
 update-alternatives --install /usr/bin/gcov-tool gcov-tool /usr/bin/gcov-tool-8 80
 update-alternatives --install /usr/bin/ld ld /usr/bin/ld.gold 80
 
+curl https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda3.sh
+chmod +x miniconda3.sh
+./miniconda3.sh -b
+rm miniconda3.sh
+export PATH=$PATH:/root/miniconda3/bin
+conda config --add channels conda-forge
+conda update --all -y
+conda clean --all -y
+
 mkdir -p /root/.local/bin
 export PATH=/root/.local/bin:$PATH
 curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.0.20171022/stack-1.6.0.20171022-linux-x86_64-static.tar.gz | tar xz --wildcards --strip-components=1 -C /root/.local/bin '*/stack'
