@@ -2,3 +2,9 @@ build:
   prefetch: true
 ghc-options:
   "$everything": -split-sections
+compiler: ghc-8.2.1.20171108
+setup-info:
+  ghc:
+    linux64-nopie:
+      8.2.1.20171108:
+        url: https://downloads.haskell.org/~ghc/8.2.2-rc3/ghc-8.2.1.20171108-x86_64-deb8-linux.tar.xz
